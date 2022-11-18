@@ -7,6 +7,7 @@ import org.junit.jupiter.api.Test;
 
 import java.io.File;
 
+import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selenide.*;
 
 public class AutomationPracticeFormTests {
@@ -35,7 +36,7 @@ public class AutomationPracticeFormTests {
         $("#lastName").setValue("Ivanov");
         $("#userEmail").setValue("ivanov.ivan@test.com");
         $("#userEmail").setValue("ivanov.ivan@test.com");
-        $(".custom-control-label").click();
+        $("#genterWrapper").$(byText("Male")).click();
         $("#userNumber").setValue("88009009090");
         $("#dateOfBirthInput").click();
         $(".react-datepicker__month-select").click();
@@ -43,16 +44,15 @@ public class AutomationPracticeFormTests {
         $(".react-datepicker__year-select").click();
         $(".react-datepicker__year-select").selectOption("1995");
         $(".react-datepicker__day--014").click();
-        $("#subjectsInput").setValue("e").pressEnter();
-        // не поняла как работать с radio button, две строчки ниже подсмотрела у других ребят с курса
-        $("#hobbies-checkbox-2").parent().click();
-        $("#hobbies-checkbox-3").parent().click();
+        $("#subjectsInput").setValue("Economics").pressEnter();
+        $("#hobbiesWrapper").$(byText("Reading")).click();
+        $("#hobbiesWrapper").$(byText("Music")).click();
         $("#uploadPicture").uploadFile(new File("src/test/resources/Screenshot 2022-11-17 at 16.11.13.png"));
         $("#currentAddress").setValue("London, UK");
         $("#state").click();
-        $("#react-select-3-input").setValue("NCR").pressEnter();
+        $("#stateCity-wrapper").$(byText("NCR")).click();
         $("#city").click();
-        $("#react-select-4-input").setValue("Gurgaon").pressEnter();
+        $("#stateCity-wrapper").$(byText("Gurgaon")).click();
         $("#submit").click();
     }
 
@@ -63,7 +63,7 @@ public class AutomationPracticeFormTests {
         $(".modal-content").shouldHave(Condition.text("Male"));
         $(".modal-content").shouldHave(Condition.text("8800900909"));
         $(".modal-content").shouldHave(Condition.text("14 April,1995"));
-        $(".modal-content").shouldHave(Condition.text("English"));
+        $(".modal-content").shouldHave(Condition.text("Economics"));
         $(".modal-content").shouldHave(Condition.text("Reading, Music"));
         $(".modal-content").shouldHave(Condition.text("Screenshot 2022-11-17 at 16.11.13.png"));
         $(".modal-content").shouldHave(Condition.text("London, UK"));
@@ -71,4 +71,3 @@ public class AutomationPracticeFormTests {
         $("#closeLargeModal").click();
     }
 }
-
