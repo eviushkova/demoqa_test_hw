@@ -1,6 +1,5 @@
 package com.demoqa;
 
-import com.codeborne.selenide.Condition;
 import org.junit.jupiter.api.Test;
 
 import static com.codeborne.selenide.Condition.text;
@@ -9,12 +8,6 @@ import static com.codeborne.selenide.Selenide.$;
 public class AutomationPracticeFormTestsWithPageObjects extends TestBase {
 
     @Test
-    void fillFormTest() {
-
-        fillForm();
-//        checkForm();
-    }
-
     void fillForm() {
 
         registrationPage.openPage()
@@ -48,19 +41,4 @@ public class AutomationPracticeFormTestsWithPageObjects extends TestBase {
 
         $(".table-responsive").shouldHave(text("Ivan"), text("Ivanov"), text("ivanov.ivan@test.com"), text("Male"), text("8800900909"));
     }
-
-//    private static void checkForm() {
-//        $(".modal-content").shouldBe(Condition.visible);
-//        $(".modal-content").shouldHave(text("Ivan Ivanov"));
-//        $(".modal-content").shouldHave(text("ivanov.ivan@test.com"));
-//        $(".modal-content").shouldHave(text("Male"));
-//        $(".modal-content").shouldHave(text("8800900909"));
-//        $(".modal-content").shouldHave(text("14 April,1995"));
-//        $(".modal-content").shouldHave(text("Economics"));
-//        $(".modal-content").shouldHave(text("Reading"));
-//        $(".modal-content").shouldHave(text("Screenshot 2022-11-17 at 16.11.13.png"));
-//        $(".modal-content").shouldHave(text("London, UK"));
-//        $(".modal-content").shouldHave(text("NCR Gurgaon"));
-//        $("#closeLargeModal").click();
-//    }
 }
