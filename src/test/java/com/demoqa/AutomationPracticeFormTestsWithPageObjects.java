@@ -9,12 +9,6 @@ import static com.codeborne.selenide.Selenide.$;
 public class AutomationPracticeFormTestsWithPageObjects extends TestBase {
 
     @Test
-    void fillFormTest() {
-
-        fillForm();
-//        checkForm();
-    }
-
     void fillForm() {
 
         registrationPage.openPage()
