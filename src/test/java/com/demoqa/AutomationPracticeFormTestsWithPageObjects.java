@@ -2,43 +2,41 @@ package com.demoqa;
 
 import org.junit.jupiter.api.Test;
 
-import static com.codeborne.selenide.Condition.text;
-import static com.codeborne.selenide.Selenide.$;
-
 public class AutomationPracticeFormTestsWithPageObjects extends TestBase {
 
     @Test
     void fillForm() {
 
+        TestData testData = TestData.generate();
+
         registrationPage.openPage()
-                .setFirstName("Ivan")
-                .setLastName("Ivanov")
-                .setEmail("ivanov.ivan@test.com")
-                .setGender("Male")
-                .setPhone("8800900909")
-                .setBirthDate("14", "April", "1995")
-                .setSubject("Economics")
-                .setHobbies("Reading")
-                .uploadPicture("Screenshot 2022-11-17 at 16.11.13.png")
-                .setAddress("London, UK")
+                .setFirstName(testData.firstName)
+                .setLastName(testData.lastName)
+                .setEmail(testData.userEmail)
+                .setGender(testData.gender)
+                .setPhone(testData.userNumber)
+                .setBirthDate(testData.birthDay, testData.birthMonth, testData.birthYear)
+                .setSubject(testData.subject)
+                .setHobbies(testData.hobbies)
+                .uploadPicture(testData.picture)
+                .setAddress(testData.address)
                 .clickState()
-                .setState("NCR")
+                .setState(testData.state)
                 .clickCity()
-                .setCity("Gurgaon")
+                .setCity(testData.city)
                 .clickSubmit();
 
         registrationPage.verifyResultsModalAppears()
-                .verifyResult("Student Name", "Ivan Ivanov")
-                .verifyResult("Student Email", "ivanov.ivan@test.com")
-                .verifyResult("Gender", "Male")
-                .verifyResult("Mobile", "8800900909")
-                .verifyResult("Date of Birth", "14 April,1995")
-                .verifyResult("Subjects", "Economics")
-                .verifyResult("Hobbies", "Reading")
-                .verifyResult("Picture", "Screenshot 2022-11-17 at 16.11.13.png")
-                .verifyResult("Address", "London, UK")
-                .verifyResult("State and City", "NCR Gurgaon");
+                .verifyResult("Student Name", testData.firstName + " " + testData.lastName)
+                .verifyResult("Student Email", testData.userEmail)
+                .verifyResult("Gender", testData.gender)
+                .verifyResult("Mobile", testData.userNumber)
+                .verifyResult("Date of Birth", testData.birthDay + " " + testData.birthMonth + "," + testData.birthYear)
+                .verifyResult("Subjects", testData.subject)
+                .verifyResult("Hobbies", testData.hobbies)
+                .verifyResult("Picture", testData.picture)
+                .verifyResult("Address", testData.address)
+                .verifyResult("State and City", testData.state + " " + testData.city);
 
-        $(".table-responsive").shouldHave(text("Ivan"), text("Ivanov"), text("ivanov.ivan@test.com"), text("Male"), text("8800900909"));
     }
 }

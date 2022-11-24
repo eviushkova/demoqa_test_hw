@@ -4,8 +4,6 @@ import com.codeborne.selenide.SelenideElement;
 import pages.components.CalendarComponent;
 import pages.components.RegistrationResultsModal;
 
-import java.io.File;
-
 import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selenide.*;
 
@@ -130,7 +128,7 @@ public class RegistrationPage {
     }
 
     public RegistrationPage verifyResultsModalAppears() {
-       registrationResultsModal.verifyModalAppears();
+        registrationResultsModal.verifyModalAppears();
 
         return this;
     }

@@ -13,5 +13,4 @@ public class TestBase {
         Configuration.browserSize = "1792x1015";
         Configuration.baseUrl = "https://demoqa.com";
     }
-
 }
